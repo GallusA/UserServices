@@ -1,5 +1,6 @@
 package com.userservices;
 
+import android.content.Context;
 import android.content.Intent;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
@@ -21,7 +22,7 @@ import static android.content.ContentValues.TAG;
 
 public class RandomListAdaptor extends RecyclerView.Adapter<RandomListAdaptor.ViewHolder> {
 
-
+   Context context;
     List<RandomNum> ramdomList = new ArrayList<>();
 
     public RandomListAdaptor(List<RandomNum> ramdomList) {
@@ -50,40 +51,21 @@ public class RandomListAdaptor extends RecyclerView.Adapter<RandomListAdaptor.Vi
         View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.random_list_item, parent, false);
         return new ViewHolder(view);
     }
-
+    private int lastPosition = -1;
     @Override
 
     public void onBindViewHolder(ViewHolder holder, int position) {
 
 
         Log.d(TAG, "onBindViewHolder: ");
-        final int p = position;
-        final RandomNum randomNum = ramdomList.get(position);
-        holder.randomN.setText(randomNum.getRandomNum());
+        if(position > lastPosition){
+            //Animation animation = AnimationUtils
+        }
 
+        Log.d(TAG, "onBindViewHolder: ");
+        final RandomNum randoms = ramdomList.get(position);
+        holder.randomN.setText(""+randoms.getRandom());
 
-        holder.itemView.setOnClickListener(new View.OnClickListener() {
-
-
-
-            @Override
-            public void onClick(View v) {
-                ArrayList<Integer> z = new ArrayList<>();
-
-                Random random = new Random();
-
-
-                for (int x = 0; x < 5; x++) {
-                z.add(random.nextInt(100) + 1);
-
-                }
-                Intent intent = new Intent();
-                intent.setClass(v.getContext(), MainActivity.class);
-                intent.putExtra("Data1", z);
-                v.getContext().startActivity(intent);
-
-            }
-    });
     }
 
     public int getItemCount() {

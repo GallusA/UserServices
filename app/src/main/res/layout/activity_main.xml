@@ -57,13 +57,20 @@
         <Button
             android:id="@+id/buttonPlay"
             android:text="Play"
-            android:textSize="45dp"
+            android:textSize="38dp"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content" />
         <Button
+        android:id="@+id/buttonPause"
+        android:text="Pause"
+        android:textSize="38dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+
+        <Button
             android:id="@+id/buttonStop"
             android:text="STOP"
-            android:textSize="45dp"
+            android:textSize="38dp"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content" />
     </LinearLayout>

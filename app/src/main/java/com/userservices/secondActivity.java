@@ -9,7 +9,12 @@ import java.util.ArrayList;
 
 public class secondActivity extends AppCompatActivity {
 
-
+    MyBoundService myBoundService;
+    ServiceRecycle myServiceRecycle;
+    boolean isBound = false;
+    boolean isBoundRecycler = false;
+    TextView tv1, tv2, tvrandom;
+    int random = -1;
     private  static final  String TAG = "SecondActivity";
 
   //  ArrayList<randomStuff> n = new ArrayList();

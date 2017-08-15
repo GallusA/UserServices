@@ -10,6 +10,7 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
+import android.widget.Toast;
 
 import static android.R.attr.onClick;
 
@@ -17,14 +18,13 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
     private static final String TAG = "MainActivityTag";
 
-    MyBoundService myBoundService;
+
     Boolean   isBound;
     int d =-5;
-    int n;
-    int size;
-    int[][] arr = new int[size][n];
-    int someValue=0;
-    Button button, Play, Stop;
+
+    Button button, Play, Stop,Pause, btnStartNormalService, btnStopNormalService, btnStartIntentService, btnBindService, btnUnBindService, btnSecondActivity;
+    MyBoundService myBoundService;
+    int r=-2;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -33,11 +33,26 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
            Play =(Button) findViewById(R.id.buttonPlay);
            Stop = (Button) findViewById(R.id.buttonStop);
+           Pause = (Button) findViewById(R.id.buttonPause);
+        btnStartNormalService = (Button) findViewById(R.id.btnStartNormalService);
+        btnStopNormalService = (Button) findViewById(R.id.btnStopNormalService);
+        btnStartIntentService = (Button) findViewById(R.id.btnStartIntentServices);
+        btnBindService = (Button) findViewById(R.id.btnBindservice);
+        btnUnBindService = (Button) findViewById(R.id.btnUnBindservice);
+        btnSecondActivity = (Button) findViewById(R.id.gotosecondActivity);
 
         Log.d(TAG, "onCreate: ");
 
         Play.setOnClickListener(this);
         Stop.setOnClickListener(this);
+        Pause.setOnClickListener(this);
+
+        btnStartNormalService.setOnClickListener(this);
+        btnStopNormalService.setOnClickListener(this);
+        btnStartIntentService.setOnClickListener(this);
+        btnBindService.setOnClickListener(this);
+        btnUnBindService.setOnClickListener(this);
+        btnSecondActivity.setOnClickListener(this);
 
     }
 
@@ -95,10 +110,20 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                  unbindService(serviceConnection);
                 break;
             case R.id.gotosecondActivity:
-                Intent intent2 = new Intent(this, secondActivity.class);
-                intent2.putExtra("data", ""+d);
-                startActivity(intent2);
-               
+                try {
+                    Intent intent2 = new Intent(this, secondActivity.class);
+                    intent2.putExtra("data", ""+d);
+                    intent2.putExtra("data1", "" +r);
+                    startActivity(intent2);
+                }catch (Exception e){
+                    Toast.makeText(this, "Just added a number!", Toast.LENGTH_SHORT).show();
+                }
+                break;
+            case R.id.buttonPlay:
+                break;
+            case R.id.buttonPause:
+                break;
+            case R.id.buttonStop:
                 break;
 
         }
